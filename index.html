@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICNB-Trello: Course Platform Journey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .board {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        .column {
+            background: #ddd;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            min-width: 200px;
+        }
+        .column h2 {
+            text-align: center;
+        }
+        .card {
+            background: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 5px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+<body>
+    <div class="board">
+        <div class="column" id="introduction">
+            <h2>Introduction</h2>
+            <div class="card" data-modal="modal1">Launching First Online Course</div>
+            <div class="card" data-modal="modal2">Initial Platform: New Zenler</div>
+            <div class="card" data-modal="modal3">Budget Constraints</div>
+            <div class="card" data-modal="modal4">Platform Exploration</div>
+        </div>
+        <div class="column" id="thinkific-experience">
+            <h2>Initial Experience with Thinkific</h2>
+            <div class="card" data-modal="modal5">Experience with Site Builder</div>
+            <div class="card" data-modal="modal6">Transition to New Zenler</div>
+        </div>
+        <div class="column" id="new-zenler-experience">
+            <h2>Experience with New Zenler</h2>
+            <div class="card" data-modal="modal7">Price and Functions</div>
+            <div class="card" data-modal="modal8">Community Features</div>
+            <div class="card" data-modal="modal9">Bugs and App Issues</div>
+        </div>
+        <div class="column" id="switch-to-easycourse">
+            <h2>Switch to EasyCourse</h2>
+            <div class="card" data-modal="modal10">Mobile App</div>
+            <div class="card" data-modal="modal11">Community Features</div>
+            <div class="card" data-modal="modal12">Tiered Seat System</div>
+        </div>
+        <div class="column" id="easycourse-benefits">
+            <h2>Benefits of EasyCourse</h2>
+            <div class="card" data-modal="modal13">Affordable White-Label App</div>
+            <div class="card" data-modal="modal14">In-App Purchases for Apple and Android</div>
+            <div class="card" data-modal="modal15">Enhanced Interaction</div>
+            <div class="card" data-modal="modal16">File Sharing and Polls</div>
+            <div class="card" data-modal="modal17">Tiered Seat System</div>
+            <div class="card" data-modal="modal18">Administrative Controls</div>
+        </div>
+        <div class="column" id="support-improvement">
+            <h2>Support and Continuous Improvement</h2>
+            <div class="card" data-modal="modal19">Rapid Bug Fixes</div>
+            <div class="card" data-modal="modal20">Openness to New Features</div>
+            <div class="card" data-modal="modal21">Upcoming Features (TV App, AI Chatbot, Automated Payouts)</div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <span class="close" data-modal="modal1">&times;</span>
+            <p>Two years ago, I launched my first online course from my driveway at home.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <span class="close" data-modal="modal2">&times;</span>
+            <p>I started with the platform called New Zenler.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <span class="close" data-modal="modal3">&times;</span>
+            <p>We were starting on a shoestring budget.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal4">
+        <div class="modal-content">
+            <span class="close" data-modal="modal4">&times;</span>
+            <p>I went through various platforms to choose the best one for me at the time.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal5">
+        <div class="modal-content">
+            <span class="close" data-modal="modal5">&times;</span>
+            <p>I initially built my courses in Thinkific but didn't like the site builder.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal6">
+        <div class="modal-content">
+            <span class="close" data-modal="modal6">&times;</span>
+            <p>Somehow, I came across New Zenler, which had the price and functions I needed.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal7">
+        <div class="modal-content">
+            <span class="close" data-modal="modal7">&times;</span>
+            <p>New Zenler had a reasonable price and the functions I needed at the time.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal8">
+        <div class="modal-content">
+            <span class="close" data-modal="modal8">&times;</span>
+            <p>The community features on New Zenler were poor.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal9">
+        <div class="modal-content">
+            <span class="close" data-modal="modal9">&times;</span>
+            <p>New Zenler had many bugs, and their app was really bad.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal10">
+        <div class="modal-content">
+            <span class="close" data-modal="modal10">&times;</span>
+            <p>The first reason for switching to EasyCourse was the mobile app.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal11">
+        <div class="modal-content">
+            <span class="close" data-modal="modal11">&times;</span>
+            <p>The community features in EasyCourse were much better.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal12">
+        <div class="modal-content">
+            <span class="close" data-modal="modal12">&times;</span>
+            <p>EasyCourse offered a tiered seat system for selling courses to organizations.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal13">
+        <div class="modal-content">
+            <span class="close" data-modal="modal13">&times;</span>
+            <p>The white-label mobile app at EasyCourse was much more affordable.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal14">
+        <div class="modal-content">
+            <span class="close" data-modal="modal14">&times;</span>
+            <p>EasyCourse added in-app purchases for Apple and Android phone users.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal15">
+        <div class="modal-content">
+            <span class="close" data-modal="modal15">&times;</span>
+            <p>EasyCourse's community features felt like running our own social media site.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal16">
+        <div class="modal-content">
+            <span class="close" data-modal="modal16">&times;</span>
+            <p>EasyCourse allowed us to upload images, videos, and files, and create polls.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal17">
+        <div class="modal-content">
+            <span class="close" data-modal="modal17">&times;</span>
+            <p>The tiered seat system allowed organizations to manage their employees' access.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal18">
+        <div class="modal-content">
+            <span class="close" data-modal="modal18">&times;</span>
+            <p>We could administrate the seats from the back end with EasyCourse.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal19">
+        <div class="modal-content">
+            <span class="close" data-modal="modal19">&times;</span>
+            <p>EasyCourse's support team provided rapid bug fixes.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal20">
+        <div class="modal-content">
+            <span class="close" data-modal="modal20">&times;</span>
+            <p>EasyCourse was open to new features and improvements.</p>
+        </div>
+    </div>
+    <div class="modal" id="modal21">
+        <div class="modal-content">
+            <span class="close" data-modal="modal21">&times;</span>
+            <p>Upcoming features include a TV app, AI chatbot, and automated payouts for affiliates.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Sortable.js for each column
+            document.querySelectorAll('.column').forEach(column => {
+                Sortable.create(column, {
+                    group: 'shared',
+                    animation: 150
+                });
+            });
+
+            // Modal functionality
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const modalId = card.getAttribute('data-modal');
+                    document.getElementById(modalId).style.display = 'block';
+                });
+            });
+
+            document.querySelectorAll('.close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', () => {
+                    const modalId = closeBtn.getAttribute('data-modal');
+                    document.getElementById(modalId).style.display = 'none';
+                });
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
